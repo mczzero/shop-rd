@@ -51,13 +51,13 @@ public class ProductService {
      * @param productId
      * @return
      */
-    public Product getProductById(String productId) {
+    public ProductDto getProductById(String productId) {
         Product product = productMapper.findById(productId);
         ProductDto productDto = new ProductDto();
         BeanUtils.copyProperties(product, productDto);
         CategoryDto categoryDto = categoryService.getCategory(product.getCategoryId());
         productDto.setCategoryName(categoryDto.getCategoryName());
-        return product;
+        return productDto;
     }
 
     /**
